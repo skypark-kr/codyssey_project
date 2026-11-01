@@ -6,11 +6,11 @@ codyssey_project
 목표: 터미널, DOCKER, GIT/GITHUB를 이용하여 개발환경을 구축하고 DOCKER 기반 웹 서버 실행 및 검증
 
 2. 개발 환경
-OS: 
-Shell:
-Terminal: 
-Git version:
-Docker version:
+OS: Microsoft Windows [Version 10.0.26300.9711]
+Shell: CMD
+Terminal: VS Code Integrated Terminal
+Git version: git version 2.56.0.windows.4
+Docker version:d
 Editor: Visual Studion Code
 
 3. 수행 체크리스트
