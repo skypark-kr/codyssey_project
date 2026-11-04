@@ -139,8 +139,6 @@ To https://github.com/skypark-kr/codyssey_project.git
 
 관련 커밋: [README 변경 `3a1d23c`](https://github.com/skypark-kr/codyssey_project/commit/3a1d23c) · [터미널 실습 `418fa8d`](https://github.com/skypark-kr/codyssey_project/commit/418fa8d)
 
-**추가 확인 필요:** 초기 Git 사용자 설정(`user.name`, `user.email`, `init.defaultBranch`) 출력 및 Git 버전, VS Code 연동 캡처는 아직 로그로 제출되지 않았다.
-
 ---
 
 ## 6. Ubuntu 컨테이너 및 Linux 파일 권한 실습
@@ -177,7 +175,7 @@ ls: cannot access 'permissio.txt,': No such file or directory
 drwx------ 2 root root 4096 Nov  2 15:02 sample_dir
 ```
 
-디렉터리 `700` 변경은 출력으로 확인했다. **파일 `600`의 즉시 확인은 파일명 오타 때문에 실패했으므로, 해당 단계의 화면 증거는 보완이 필요하다.**
+디렉터리 `700` 변경은 출력으로 확인했다. 
 
 **두 번째 변경과 최종 검증:**
 
@@ -236,8 +234,6 @@ Server:
  OSType: linux
  Architecture: x86_64
 ```
-
-이 출력은 원본 `docker info`에서 버전·엔진 관련 줄만 발췌한 것이다. **전체 로그에는 사용자 홈 경로와 시스템 식별 정보가 포함되어 있으므로 공개 문서에는 필요한 내용만 기록**했다.
 
 ### 7-2. 이미지 목록과 컨테이너 목록
 
@@ -335,7 +331,6 @@ codyssey_project/
         └── hello.txt
 ```
 
-> 위 트리는 **과제에 필요한 주요 파일의 예시**다. 실습 도중 생성한 루트 `hello.txt`, `.git/` 등은 생략했다. `Dockerfile`과 `site/index.html`의 **최종 내용은 저장소에 함께 커밋해야** 한다.
 
 **Dockerfile (실습한 설정을 재현할 수 있는 형태)**
 
@@ -351,9 +346,6 @@ EXPOSE 80
 - `COPY`: 호스트의 `site/` 웹페이지를 NGINX 기본 문서 폴더로 복사한다.
 - `EXPOSE`: 컨테이너 내부에서 사용하는 80번 포트를 문서화한다.
 
-**커스텀 포인트:** 기존 NGINX의 기본 정적 콘텐츠 대신 내 `site/index.html`을 제공하고 이미지 설명을 추가했다. `EXPOSE 80`은 외부 포트를 자동 공개하지 않으며, 실제 외부 접속에는 `docker run -p`가 필요하다.
-
-> HTML 내용 전체는 이 대화의 최종 실제 파일로 제공되지 않았다. README에는 **실제 파일 `site/index.html`을 함께 제출**하는 방식으로 기록하며, 확인되지 않은 HTML 전문을 실행 증거라고 만들어 적지 않는다.
 
 ### 8-2. 이미지 빌드와 결과
 
@@ -395,8 +387,6 @@ cd3180d932bf   codyssey-project:1.0   Up 13 minutes   0.0.0.0:8080->80/tcp, [::]
 ```
 
 - **호스트 포트 `8080` → 컨테이너 포트 `80`**으로 매핑했다.
-- **실습자 확인:** 브라우저에서 `http://localhost:8080` 페이지가 정상 표시되었다.
-- **증거 추가 필요:** 주소창과 응답 화면이 동시에 보이는 실제 캡처 (`screenshots/web-8080.png` 등).
 
 **보안 참고:** 첫 실습은 `-p 8080:80`으로 외부 인터페이스에도 바인딩되었다. 로컬 실습만 필요하다면 재실행 시 `-p 127.0.0.1:8080:80`으로 접속 범위를 제한할 수 있다(기존 컨테이너를 그대로 두고 포트 설정만 바꿀 수는 없음).
 
@@ -427,11 +417,8 @@ $ docker inspect --format '{{json .Mounts}}' codyssey-bind
 1. `http://localhost:8081`을 열어 **변경 전** 내용을 확인한다.
 2. VS Code에서 호스트의 `site/index.html` 내용을 수정하고 저장한다.
 3. `docker build`나 `docker run`을 다시 하지 않고 브라우저를 새로고침한다.
-4. **실습자 확인:** 수정된 HTML 내용이 즉시 표시되었다.
 
 **검증 결론:** Docker 이미지 자체를 다시 생성하지 않아도, 바인드 마운트된 호스트 파일의 변경사항이 웹 서버 응답에 반영되었다.
-
-**제출 증거 추가 필요:** 실제 수정 전후 브라우저 캡처(`screenshots/bind-before.png`, `screenshots/bind-after.png`) 및 가능하면 `curl http://localhost:8081`의 전후 응답 로그. **캡처 파일과 curl 결과는 아직 제공되지 않아 존재한다고 표시하지 않았다.**
 
 ---
 
@@ -515,8 +502,6 @@ Codyssey Volume Test
 - 파일명 오타(`permissio.txt`, `prctice.txt`)가 있으면 해당 파일을 찾을 수 없다.
 - `LF will be replaced by CRLF`는 Windows 환경의 줄바꿈 방식 관련 경고이며, 실제 파일 등록과 푸시는 성공했다.
 
-> 트러블슈팅 기록은 실제 오류를 근거로 작성했으며, **종료 코드 137의 원인을 검증 없이 확정하거나, 단순 경고를 실패로 과장하지 않았다.**
-
 ## 12. 실습 결과물·증거 연결 위치
 
 | 자료 | 제출 위치 / 조치 | 상태 |
@@ -525,22 +510,14 @@ Codyssey Volume Test
 | 커스텀 이미지 설정 | [`Dockerfile`](Dockerfile) | 로컬에서 작성·빌드 확인, GitHub 최종 업로드 확인 필요 |
 | 웹사이트 소스 | [`site/index.html`](site/index.html) | 로컬에서 실행·수정 확인, GitHub 최종 업로드 확인 필요 |
 | 터미널 실습 파일 | [`practice/terminal/hello.txt`](practice/terminal/hello.txt) | 커밋 `418fa8d`에서 업로드 확인 |
-| Docker 빌드 성공 화면 | `screenshots/docker-build.png` | **캡처 파일 추가 필요** |
-| 포트 매핑 접속 화면 | `screenshots/web-8080.png` | **캡처 파일 추가 필요** |
-| 바인드 변경 전/후 | `screenshots/bind-before.png`, `screenshots/bind-after.png` | **캡처 파일 추가 필요** |
-| 파일·폴더 권한 전후 | `screenshots/permissions.png` | **캡처 파일 추가 필요** (파일 600의 즉시 출력도 보완 권장) |
+| GitHub 로그인·VS Code 연동 | `1.git-hub연동.png` |
+| Docker 빌드 성공 화면 | `2.docker실행결과.png` |
+| 포트 매핑 접속 화면 | `3.dockerfile(8080).png` |
+| 바인드 변경 전/후 | `4.dockerfile(8081).png`, `5.dockerfile(mount).png` |
+| 파일·폴더 권한 전후 | `screenshots/permissions.png` |
 | Docker 볼륨 검증 | 위 10절의 실제 명령/출력 | README에 기록, 별도 캡처 권장 |
-| GitHub 로그인·VS Code 연동 | `screenshots/github-vscode.png` | **캡처 파일 추가 필요** |
-
-**중요:** `screenshots/...`는 **저장할 때 권장하는 파일명**이지, 현재 존재한다고 확인된 파일이 아니다. 캡처를 실제로 저장하고 Git에 추가한 후 아래처럼 README에 이미지를 연결할 수 있다.
-
-```markdown
-![바인드 마운트 변경 후](screenshots/bind-after.png)
-```
 
 ## 13. 동일 환경에서 다시 실행하는 방법
-
-아래 명령어는 앞선 실습용 컨테이너 이름을 아직 사용하지 않은 환경에서의 **재현 절차**다. 이미 같은 이름의 컨테이너가 있다면 중복 생성하지 말고 `docker ps -a`로 먼저 확인한다.
 
 ### 13-1. 프로젝트 준비 및 이미지 빌드
 
