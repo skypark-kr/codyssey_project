@@ -699,33 +699,6 @@ curl -i http://localhost:19081
 
 컨테이너를 새로 실행하는 명령이므로 해당 이름이 이미 존재한다면 중복 실행하지 않아야 한다. `docker ps -a`로 먼저 확인한다. `backup/` 폴더를 다른 PC에서도 복원하려면 실제 백업 파일을 별도로 안전하게 옮겨야 한다. 이 저장소의 `.gitignore`는 해당 폴더를 공개 커밋에서 제외한다.
 
-## 제출 파일 및 최종 점검
-
-| 파일 | 역할 | 이번 패키지 포함 여부 |
-|---|---|---|
-| `README.md` | 평가 1~18의 실행 과정·실제 출력·설명·트러블슈팅 | 포함 |
-| `images/*.png` | 실제 스크린샷 22장, 해당 섹션에 상대 링크 | 포함 |
-| `logs/*.txt` | Docker/Git의 별도 상태 증거 5종 | 포함 |
-| `Dockerfile` | NGINX 웹 서버 이미지 제작 설정 | **기존 프로젝트에 있음**; 이 README에서 내용 확인 가능 |
-| `site/index.html` | 정적 웹페이지 소스 | **기존 프로젝트에 있음**; 새 ZIP에는 포함하지 않음 |
-| `backup/review-volume.tar` | 로컬 볼륨 백업(로그상 생성됨) | **제출하지 않음** (로컬 보관·Git 제외) |
-| `.gitignore` | `backup/` Git 추적 제외 | **기존 로컬에서 작성됨**; Git 커밋 필요 |
-
-### 이미지·README 업로드 확인 절차
-
-```bash
-cd /c/codyssey-week1/codyssey_project
-git status
-
-git add README.md images/ logs/ .gitignore practice/review/ site/review.txt
-git diff --cached --name-only
-git diff --cached --stat
-
-git commit -m "Document Mission 1-1 rerun and peer review fixes"
-git push origin main
-git status
-```
-
 ---
 
 ## 학습 정리
