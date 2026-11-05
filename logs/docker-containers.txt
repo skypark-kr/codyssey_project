@@ -1,0 +1,17 @@
+CONTAINER ID   IMAGE                     COMMAND                   CREATED             STATUS                         PORTS                                     NAMES
+9e3a81dde4bd   ubuntu                    "sleep infinity"          41 minutes ago      Up 41 minutes                                                            review-vol2
+7bbbf5de408a   codyssey-review-web:1.0   "/docker-entrypoint.…"   52 minutes ago      Up 52 minutes                  127.0.0.1:18081->80/tcp                   review-bind-18081
+ecdb3f8c7cfe   codyssey-review-web:1.0   "/docker-entrypoint.…"   55 minutes ago      Up 55 minutes                  127.0.0.1:18080->80/tcp                   review-web-18080
+22e46a8945cd   hello-world               "/hello"                  About an hour ago   Exited (0) About an hour ago                                             review-hello
+8fccb4740b1d   ubuntu                    "bash"                    About an hour ago   Exited (0) About an hour ago                                             review-permission
+0a739282d5c8   nginx                     "/docker-entrypoint.…"   24 hours ago        Created                                                                  my-web
+3df4ec4e4fb0   hello-world               "/hello"                  24 hours ago        Exited (0) 24 hours ago                                                  peaceful_curran
+879fdf87bb75   ubuntu                    "sleep infinity"          2 days ago          Up 2 days                                                                codyssey-vol2
+d3784cc8eb00   codyssey-project:1.0      "/docker-entrypoint.…"   2 days ago          Up 2 days                      127.0.0.1:8081->80/tcp                    codyssey-bind
+bfbc65cdd87d   codyssey-project:1.0      "/docker-entrypoint.…"   3 days ago          Up 3 days                      80/tcp                                    clever_agnesi
+cd3180d932bf   codyssey-project:1.0      "/docker-entrypoint.…"   3 days ago          Up 3 days                      0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   codyssey-server
+9c8e90f6cc73   ubuntu                    "bash"                    3 days ago          Exited (137) 3 days ago                                                  ubuntu-ops
+d801a380e4f6   hello-world               "/hello"                  3 days ago          Exited (0) 3 days ago                                                    hello-codyssey
+e821beb07cf8   ubuntu                    "bash"                    4 days ago          Exited (0) 3 days ago                                                    permission-test
+243fe8266709   ubuntu                    "bash"                    4 days ago          Exited (0) 4 days ago                                                    blissful_maxwell
+37df1f1327a6   hello-world               "/hello"                  4 days ago          Exited (0) 4 days ago                                                    modest_antonelli

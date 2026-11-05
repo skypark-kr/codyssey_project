@@ -1,0 +1,1 @@
+[{"Type":"bind","Source":"C:/codyssey-week1/codyssey_project/site","Destination":"/usr/share/nginx/html","Mode":"","RW":false,"Propagation":"rprivate"}]
